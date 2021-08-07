@@ -11,4 +11,7 @@ import org.springframework.stereotype.Repository
 interface UserRepository : JpaRepository<User, Long> {
     @Query("select u from User u where u.enabled = true")
     fun queryAllByEnabledIsTrue(pageable: Pageable): Page<User>
+
+    @Query("select (count(u) > 0) from User u where u.username = ?1")
+    fun existsAllByUsername(username: String): Boolean
 }

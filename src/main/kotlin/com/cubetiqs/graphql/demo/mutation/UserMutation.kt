@@ -16,6 +16,8 @@ class UserMutation @Autowired constructor(
 ) : GraphQLMutationResolver {
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     fun createUser(input: UserInput): User {
+        if (userRepository.existsAllByUsername(input.username ?: "")) throw Exception("Username has been already existed!")
+
         val user = UserMapper.fromInputToUser(input)
         return userRepository.save(user)
     }

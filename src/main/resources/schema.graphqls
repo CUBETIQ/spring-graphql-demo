@@ -1,7 +1,59 @@
+enum AccountType {
+    BASIC
+    PREMIUM
+    BUSINESS
+}
+
+enum AccountCurrency {
+    USD
+    KHR
+}
+
+type User {
+    id: ID
+    code: String
+    username: String
+    name: String
+    enabled: Boolean
+}
+
+type Account {
+    id: ID
+    code: String
+    balance: Float
+    currentBalance: Float
+    type: AccountType
+    currency: AccountCurrency
+    user: User!
+}
+
+input UserInput {
+    username: String
+    password: String
+    name: String
+    enabled: Boolean
+}
+
+input AccountInput {
+    userId: Int
+    type: AccountType
+    currency: AccountCurrency
+}
+
 type Query {
     hello: String
+
+    fetchUsers: [User]!
+
+    fetchAccounts: [Account]!
 }
 
 type Subscription {
     hello: Int
+}
+
+type Mutation {
+    createUser(input: UserInput): User!
+
+    openAccount(input: AccountInput): Account!
 }

@@ -1,6 +1,8 @@
 package com.cubetiqs.graphql.demo.domain.account
 
 import com.cubetiqs.graphql.demo.domain.AbstractEntity
+import com.cubetiqs.graphql.demo.domain.user.User
+import com.fasterxml.jackson.annotation.JsonBackReference
 import org.hibernate.Hibernate
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
@@ -9,41 +11,47 @@ import java.util.*
 import javax.persistence.*
 
 @Entity
-@Table(
-    name = "accounts", indexes = [
-        Index(name = "idx_account_id", columnList = "id")
-    ]
-)
-@EntityListeners(AccountEntityListener::class)
+@Table(name = "accounts", indexes = [
+    Index(name = "idx_account_code", columnList = "code")
+])
+@EntityListeners(value = [AccountEntityListener::class])
 open class Account(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null,
+    open var id: Long? = null,
+
+    @Column(length = 9)
+    open var code: String? = null,
 
     @Column
-    var balance: BigDecimal = BigDecimal.ZERO,
+    open var balance: BigDecimal = BigDecimal.ZERO,
 
     @Column
-    var currentBalance: BigDecimal = BigDecimal.ZERO,
+    open var currentBalance: BigDecimal = BigDecimal.ZERO,
 
     @Column(length = 10)
     @Enumerated(EnumType.STRING)
-    var accountType: AccountType = AccountType.BASIC,
+    open var type: AccountType = AccountType.BASIC,
 
     @Column(length = 3)
     @Enumerated(EnumType.STRING)
-    var currency: AccountCurrency = AccountCurrency.USD,
+    open var currency: AccountCurrency = AccountCurrency.USD,
 
     @Version
-    var version: Long? = null,
+    open var version: Long? = null,
 
     @CreatedDate
     @Temporal(TemporalType.TIMESTAMP)
-    var createdDate: Date? = null,
+    open var createdDate: Date? = null,
 
     @LastModifiedDate
     @Temporal(TemporalType.TIMESTAMP)
-    var updatedDate: Date? = null,
+    open var updatedDate: Date? = null,
+
+    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY,cascade = [CascadeType.REFRESH, CascadeType.DETACH])
+    @JoinColumn(name = "user_id")
+    open var user: User? = null,
 ) : AbstractEntity<Account, Long>() {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -57,6 +65,6 @@ open class Account(
 
     @Override
     override fun toString(): String {
-        return this::class.simpleName + "(id = $id , balance = $balance , currentBalance = $currentBalance , accountType = $accountType , currency = $currency , version = $version , createdDate = $createdDate , updatedDate = $updatedDate )"
+        return this::class.simpleName + "(id = $id , balance = $balance , currentBalance = $currentBalance , type = $type , currency = $currency , version = $version , createdDate = $createdDate , updatedDate = $updatedDate , user = ${user?.id} )"
     }
 }

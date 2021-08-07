@@ -9,8 +9,14 @@ spring:
     password: ${DB_PASSWORD:your-password}
     driver-class-name: org.postgresql.Driver
   jpa:
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: ${HIBERNATE_DDL:update}
+    show-sql: ${JPA_SHOW_SQL:true}
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: ${HIBERNATE_LAZY_NO_TRANS:true}
 
 # Spring Boot Actuator
 management:

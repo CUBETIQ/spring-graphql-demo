@@ -19,6 +19,7 @@ repositories {
 extra["graphqlVersion"] = "11.0.0"
 
 dependencies {
+	implementation("com.graphql-java:graphql-java-extended-scalars:16.0.0")
 	implementation("com.graphql-java-kickstart:graphql-spring-boot-starter:${property("graphqlVersion")}")
 	implementation("com.graphql-java-kickstart:playground-spring-boot-starter:${property("graphqlVersion")}")
 	implementation("com.graphql-java-kickstart:voyager-spring-boot-starter:${property("graphqlVersion")}")

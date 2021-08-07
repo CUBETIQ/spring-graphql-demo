@@ -4,9 +4,9 @@ server:
 # Spring Boot
 spring:
   datasource:
-    url: jdbc:postgresql://${DB_HOST:192.168.0.202}:5432/${DB_NAME:graphql-demo}
+    url: jdbc:postgresql://${DB_HOST:localhost}:5432/${DB_NAME:graphql-demo}
     username: ${DB_USER:your-username}
-    password: ${DB_PASSWRORD:your-password}
+    password: ${DB_PASSWORD:your-password}
     driver-class-name: org.postgresql.Driver
 
 # Spring Boot Actuator

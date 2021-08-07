@@ -5,7 +5,7 @@ import com.cubetiqs.graphql.demo.domain.user.User
 import com.cubetiqs.graphql.demo.domain.user.UserInput
 import com.cubetiqs.graphql.demo.domain.user.UserMapper
 import com.cubetiqs.graphql.demo.repository.UserRepository
-import graphql.kickstart.tools.GraphQLMutationResolver
+import com.netflix.graphql.dgs.DgsMutation
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.transaction.annotation.Propagation
 import org.springframework.transaction.annotation.Transactional
@@ -13,7 +13,8 @@ import org.springframework.transaction.annotation.Transactional
 @GMutation
 class UserMutationResolver @Autowired constructor(
     private val userRepository: UserRepository,
-) : GraphQLMutationResolver {
+) {
+    @DgsMutation(field = "createUser")
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     fun createUser(input: UserInput): User {
         if (userRepository.existsAllByUsername(input.username ?: "")) throw Exception("Username has been already existed!")

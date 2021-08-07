@@ -1,11 +1,12 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "2.6.0-SNAPSHOT"
+	id("org.springframework.boot") version "2.5.3"
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
 	kotlin("jvm") version "1.5.21"
 	kotlin("plugin.spring") version "1.5.21"
 	kotlin("plugin.jpa") version "1.5.21"
+	id("com.netflix.dgs.codegen") version "5.0.5"
 }
 
 group = "com.cubetiqs"
@@ -16,16 +17,13 @@ repositories {
 	maven { url = uri("https://m.ctdn.net") }
 }
 
-extra["graphqlVersion"] = "11.0.0"
+extra["dgsVersion"] = "4.5.0"
 
 dependencies {
-	implementation("com.graphql-java:graphql-java-extended-scalars:16.0.0")
-	implementation("com.graphql-java-kickstart:graphql-spring-boot-starter:${property("graphqlVersion")}")
-	implementation("com.graphql-java-kickstart:playground-spring-boot-starter:${property("graphqlVersion")}")
-	implementation("com.graphql-java-kickstart:voyager-spring-boot-starter:${property("graphqlVersion")}")
-
+	implementation("com.netflix.graphql.dgs:graphql-dgs-spring-boot-starter:${property("dgsVersion")}")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
@@ -38,7 +36,6 @@ dependencies {
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
-	testImplementation("com.graphql-java-kickstart:graphql-spring-boot-starter-test:${property("graphqlVersion")}")
 }
 
 tasks.withType<KotlinCompile> {
@@ -50,4 +47,10 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+}
+
+tasks.withType<com.netflix.graphql.dgs.codegen.gradle.GenerateJavaTask> {
+	packageName = "com.cubetiqs.graphql.demo.dgmodel"
+	schemaPaths = mutableListOf("${projectDir}/src/main/resources/schema")
+	generateClient = true
 }

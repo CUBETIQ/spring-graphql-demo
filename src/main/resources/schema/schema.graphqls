@@ -1,0 +1,21 @@
+type Query {
+    hello: String
+
+    helloByName(name: String!): String
+
+    fetchUsers: [User]!
+
+    fetchAccounts: [Account]!
+
+    fetchExpenses(filter: ExpenseFilter, pageNumber: Int, pageSize: Int) : ExpensePage
+}
+
+type Subscription {
+    hello: Int
+}
+
+type Mutation {
+    createUser(input: UserInput): User!
+
+    openAccount(input: AccountInput): Account!
+}

@@ -1,0 +1,26 @@
+enum AccountType {
+    BASIC
+    PREMIUM
+    BUSINESS
+}
+
+enum AccountCurrency {
+    USD
+    KHR
+}
+
+type Account {
+    id: ID
+    code: String
+    balance: Float
+    currentBalance: Float
+    type: AccountType
+    currency: AccountCurrency
+    user: User!
+}
+
+input AccountInput {
+    userId: Int
+    type: AccountType
+    currency: AccountCurrency
+}

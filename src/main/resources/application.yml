@@ -17,7 +17,8 @@ spring:
     properties:
       hibernate:
         enable_lazy_load_no_trans: ${HIBERNATE_LAZY_NO_TRANS:true}
-
+  main:
+    allow-bean-definition-overriding: true
 # Spring Boot Actuator
 management:
   endpoints:
@@ -25,15 +26,8 @@ management:
       exposure:
         include: health,info,metrics
 
-# GraphQL Voyager
-voyager:
-  enabled: true
-  cdn:
-    enabled: false
-
-# GraphQL Playground
-graphql:
-  playground:
+# DGS GraphQL
+dgs:
+  graphql:
+    graphiql:
       enabled: true
-      cdn:
-        enabled: false

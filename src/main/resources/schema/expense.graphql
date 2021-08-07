@@ -1,0 +1,16 @@
+input ExpenseFilter {
+    isIncome: Boolean
+}
+
+type Expense {
+    id: ID
+    description: String
+    amount: Int
+    isIncome: Boolean
+}
+
+type ExpensePage {
+    list: [Expense]
+    totalPages: Int
+    currentPage: Int
+}

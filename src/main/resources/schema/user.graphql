@@ -1,0 +1,14 @@
+type User {
+    id: ID
+    code: String
+    username: String
+    name: String
+    enabled: Boolean
+}
+
+input UserInput {
+    username: String
+    password: String
+    name: String
+    enabled: Boolean
+}

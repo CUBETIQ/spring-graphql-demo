@@ -1,4 +1,4 @@
-package com.cubetiqs.graphql.demo.query
+package com.cubetiqs.graphql.demo.resolver.query
 
 import com.cubetiqs.graphql.demo.context.GQuery
 import com.cubetiqs.graphql.demo.domain.account.Account
@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Pageable
 
 @GQuery
-class AccountQuery @Autowired constructor(
+class AccountQueryResolver @Autowired constructor(
     private val accountRepository: AccountRepository,
 ) : GraphQLQueryResolver {
     fun fetchAccounts(): Collection<Account> {

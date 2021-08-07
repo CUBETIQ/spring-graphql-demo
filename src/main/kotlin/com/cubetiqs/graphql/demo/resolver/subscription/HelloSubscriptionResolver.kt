@@ -1,4 +1,4 @@
-package com.cubetiqs.graphql.demo.resolver
+package com.cubetiqs.graphql.demo.resolver.subscription
 
 import graphql.kickstart.tools.GraphQLSubscriptionResolver
 import graphql.schema.DataFetchingEnvironment

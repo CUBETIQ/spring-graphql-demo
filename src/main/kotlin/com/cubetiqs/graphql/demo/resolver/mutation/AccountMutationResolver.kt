@@ -1,4 +1,4 @@
-package com.cubetiqs.graphql.demo.mutation
+package com.cubetiqs.graphql.demo.resolver.mutation
 
 import com.cubetiqs.graphql.demo.context.GMutation
 import com.cubetiqs.graphql.demo.domain.account.Account
@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Propagation
 import org.springframework.transaction.annotation.Transactional
 
 @GMutation
-class AccountMutation @Autowired constructor(
+class AccountMutationResolver @Autowired constructor(
     private val accountRepository: AccountRepository,
     private val userRepository: UserRepository,
 ) : GraphQLMutationResolver {

@@ -20,9 +20,10 @@ extra["graphqlVersion"] = "11.0.0"
 
 dependencies {
 	implementation("com.graphql-java-kickstart:graphql-spring-boot-starter:${property("graphqlVersion")}")
-	implementation("com.graphql-java-kickstart:graphiql-spring-boot-starter:${property("graphqlVersion")}")
+	implementation("com.graphql-java-kickstart:playground-spring-boot-starter:${property("graphqlVersion")}")
 	implementation("com.graphql-java-kickstart:voyager-spring-boot-starter:${property("graphqlVersion")}")
 
+	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")

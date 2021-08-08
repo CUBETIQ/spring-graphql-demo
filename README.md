@@ -1,6 +1,6 @@
 # GraphQL & Spring Boot (Demo Project)
 - Spring Boot (2.6)
-- GraphQL (11)
+- DGS Framework (4.5.0)
 - Kotlin (1.5.21)
 
 # Contributors

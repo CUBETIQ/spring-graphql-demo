@@ -21,6 +21,8 @@ extra["dgsVersion"] = "4.5.0"
 
 dependencies {
 	implementation("com.netflix.graphql.dgs:graphql-dgs-spring-boot-starter:${property("dgsVersion")}")
+	runtimeOnly("com.netflix.graphql.dgs:graphql-dgs-subscriptions-websockets-autoconfigure:${property("dgsVersion")}")
+
 	implementation("org.springframework.boot:spring-boot-starter-actuator")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-web")

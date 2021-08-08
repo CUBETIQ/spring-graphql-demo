@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
 	id("org.springframework.boot")
 	id("io.spring.dependency-management")
@@ -12,6 +10,8 @@ plugins {
 extra["dgsVersion"] = "4.5.0"
 
 dependencies {
+	api(project(":cubetiq-security-jwt"))
+
 	implementation("com.netflix.graphql.dgs:graphql-dgs-spring-boot-starter:${property("dgsVersion")}")
 	runtimeOnly("com.netflix.graphql.dgs:graphql-dgs-subscriptions-websockets-autoconfigure:${property("dgsVersion")}")
 

@@ -42,7 +42,7 @@ const HELLO = gql`
 function App() {
     // const {error, loading, data} = useQuery<AccountResult>(ACCOUNTS)
     const {error, loading, data} = useSubscription(HELLO)
-
+    console.log(data)
     return (
         <>
             <h1>Accounts</h1>
@@ -56,7 +56,7 @@ function App() {
                     //         </>
                     //     )
                     // )
-                <p>data</p>
+                <p>{`${data.hello}`}</p>
             }
         </>
     );

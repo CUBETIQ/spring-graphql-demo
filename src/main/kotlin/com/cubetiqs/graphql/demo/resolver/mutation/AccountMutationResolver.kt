@@ -1,6 +1,7 @@
 package com.cubetiqs.graphql.demo.resolver.mutation
 
 import com.cubetiqs.graphql.demo.context.GMutation
+import com.cubetiqs.graphql.demo.dgmodel.DgsConstants
 import com.cubetiqs.graphql.demo.domain.account.Account
 import com.cubetiqs.graphql.demo.domain.account.AccountInput
 import com.cubetiqs.graphql.demo.domain.account.AccountMapper
@@ -20,7 +21,7 @@ class AccountMutationResolver {
     @Autowired
     private lateinit var userRepository: UserRepository
 
-    @DgsData(parentType = "Mutation", field = "openAccount")
+    @DgsMutation(field = DgsConstants.MUTATION.OpenAccount)
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     fun openAccount(input: AccountInput): Account {
         val account = AccountMapper.fromInputToAccount(input)

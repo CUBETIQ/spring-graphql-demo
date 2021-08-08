@@ -7,7 +7,6 @@ import com.cubetiqs.graphql.demo.domain.account.AccountInput
 import com.cubetiqs.graphql.demo.domain.account.AccountMapper
 import com.cubetiqs.graphql.demo.repository.AccountRepository
 import com.cubetiqs.graphql.demo.repository.UserRepository
-import com.netflix.graphql.dgs.DgsData
 import com.netflix.graphql.dgs.DgsMutation
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.transaction.annotation.Propagation

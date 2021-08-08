@@ -1,7 +1,9 @@
 package com.cubetiqs.graphql.demo.resolver.query
 
 import com.cubetiqs.graphql.demo.context.GQuery
+import com.cubetiqs.graphql.demo.dgmodel.DgsConstants
 import com.netflix.graphql.dgs.DgsQuery
+import org.springframework.security.access.prepost.PreAuthorize
 import reactor.core.publisher.Mono
 import java.util.concurrent.CompletableFuture
 
@@ -12,7 +14,8 @@ class HelloQueryResolver {
         return Mono.just("Hello Query...!").toFuture()
     }
 
-    @DgsQuery(field = "helloByName")
+    @PreAuthorize("hasAnyRole('ADMIN')")
+    @DgsQuery(field = DgsConstants.QUERY.HelloByName)
     fun helloByName(name: String): CompletableFuture<String> {
         return Mono.just("Hello $name...!").toFuture()
     }

@@ -12,6 +12,8 @@ type Query {
 
 type Subscription {
     hello: Int
+
+    fetchAccounts: [Account]
 }
 
 type Mutation {

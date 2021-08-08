@@ -15,7 +15,10 @@ type Subscription {
 }
 
 type Mutation {
+    login(username: String!, password: String!): LoginResponse
+
     createUser(input: UserInput): User!
+    changeUserPassword(input: UserChangePasswordInput): User!
 
     openAccount(input: AccountInput): Account!
 }

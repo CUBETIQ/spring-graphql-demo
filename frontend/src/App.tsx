@@ -40,23 +40,23 @@ const HELLO = gql`
 `
 
 function App() {
-    // const {error, loading, data} = useQuery<AccountResult>(ACCOUNTS)
-    const {error, loading, data} = useSubscription(HELLO)
+    const {error, loading, data} = useQuery<AccountResult>(ACCOUNTS)
+    // const {error, loading, data} = useSubscription(HELLO)
     console.log(data)
     return (
         <>
             <h1>Accounts</h1>
             {
                 loading || !data ? <p>Loading...</p> :
-                    // data.fetchAccounts.map(account => (
-                    //         <>
-                    //             <div>Account ID: {account.id}</div>
-                    //             <div>Account Code: {account.code}</div>
-                    //             <div>Account User: {account.user.name}</div>
-                    //         </>
-                    //     )
-                    // )
-                <p>{`${data.hello}`}</p>
+                    data.fetchAccounts.map(account => (
+                            <>
+                                <div>Account ID: {account.id}</div>
+                                <div>Account Code: {account.code}</div>
+                                <div>Account User: {account.user.name}</div>
+                            </>
+                        )
+                    )
+                // <p>{`${data.hello}`}</p>
             }
         </>
     );

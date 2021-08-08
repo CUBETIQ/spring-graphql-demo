@@ -1,6 +1,6 @@
 package com.cubetiqs.graphql.demo.config
 
-import com.cubetiqs.graphql.demo.secutiry.AuthService
+import com.cubetiqs.graphql.demo.security.AuthService
 import com.cubetiqs.security.jwt.AuthenticationExceptionEntryPoint
 import com.cubetiqs.security.jwt.JwtSecurityConfigurer
 import org.springframework.beans.factory.annotation.Autowired
@@ -13,26 +13,25 @@ import org.springframework.security.config.http.SessionCreationPolicy
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 class WebSecurityConfig : WebSecurityConfigurerAdapter() {
     @Autowired
     private lateinit var authService: AuthService
 
     override fun configure(http: HttpSecurity) {
-        http.csrf()
-            .and()
-            .httpBasic()
-            .disable()
+        http.csrf().disable()
             .sessionManagement()
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-            .and()
+
+        http
             .exceptionHandling()
             .authenticationEntryPoint(AuthenticationExceptionEntryPoint())
-            .and()
+
+        http
             .apply(JwtSecurityConfigurer(authService))
-            .and()
+
+        http
             .authorizeRequests()
-            .anyRequest()
-            .permitAll()
+            .anyRequest().permitAll()
     }
 }

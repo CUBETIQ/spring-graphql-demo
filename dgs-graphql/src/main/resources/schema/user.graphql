@@ -12,3 +12,12 @@ input UserInput {
     name: String
     enabled: Boolean
 }
+
+type LoginResponse {
+    token: String
+}
+
+input UserChangePasswordInput {
+    username: String!
+    password: String!
+}

@@ -3,6 +3,8 @@ server:
 
 # Spring Boot
 spring:
+  profiles:
+    active: ${APP_PROFILE:}
   datasource:
     url: jdbc:postgresql://${DB_HOST:localhost}:5432/${DB_NAME:graphql-demo}
     username: ${DB_USER:your-username}

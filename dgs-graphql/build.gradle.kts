@@ -7,13 +7,12 @@ plugins {
 	id("com.netflix.dgs.codegen")
 }
 
-extra["dgsVersion"] = "4.5.0"
-
 dependencies {
 	api(project(":cubetiq-security-jwt"))
 
-	implementation("com.netflix.graphql.dgs:graphql-dgs-spring-boot-starter:${property("dgsVersion")}")
-	runtimeOnly("com.netflix.graphql.dgs:graphql-dgs-subscriptions-websockets-autoconfigure:${property("dgsVersion")}")
+	implementation(platform("com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:4.10.4"))
+	implementation("com.netflix.graphql.dgs:graphql-dgs-spring-boot-starter")
+	runtimeOnly("com.netflix.graphql.dgs:graphql-dgs-subscriptions-websockets-autoconfigure")
 
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("org.springframework.boot:spring-boot-starter-actuator")

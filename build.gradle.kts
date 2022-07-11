@@ -6,7 +6,7 @@ plugins {
     kotlin("jvm") version "1.7.10" apply false
     kotlin("plugin.spring") version "1.7.10" apply false
     kotlin("plugin.jpa") version "1.7.10" apply false
-    id("com.netflix.dgs.codegen") version "5.2.3" apply false
+    id("com.netflix.dgs.codegen") version "5.2.4" apply false
 }
 
 allprojects {

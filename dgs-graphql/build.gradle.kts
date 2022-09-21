@@ -10,7 +10,7 @@ plugins {
 dependencies {
 	api(project(":cubetiq-security-jwt"))
 
-	implementation(platform("com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:5.2.1"))
+	implementation(platform("com.netflix.graphql.dgs:graphql-dgs-platform-dependencies:5.2.2"))
 	implementation("com.netflix.graphql.dgs:graphql-dgs-spring-boot-starter")
 	runtimeOnly("com.netflix.graphql.dgs:graphql-dgs-subscriptions-websockets-autoconfigure")
 

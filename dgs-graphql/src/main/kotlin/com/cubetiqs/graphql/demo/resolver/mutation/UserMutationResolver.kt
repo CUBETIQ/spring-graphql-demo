@@ -7,7 +7,7 @@ import com.cubetiqs.graphql.demo.domain.user.User
 import com.cubetiqs.graphql.demo.domain.user.UserInput
 import com.cubetiqs.graphql.demo.domain.user.UserMapper
 import com.cubetiqs.graphql.demo.repository.UserRepository
-import com.cubetiqs.security.jwt.util.JwtUtils
+import com.cubetiqs.sp.security.util.PasswordUtils
 import com.netflix.graphql.dgs.DgsMutation
 import com.netflix.graphql.dgs.exceptions.DgsEntityNotFoundException
 import org.springframework.beans.factory.annotation.Autowired
@@ -30,7 +30,7 @@ class UserMutationResolver @Autowired constructor(
     @DgsMutation(field = DgsConstants.MUTATION.ChangeUserPassword)
     fun changePassword(input: UserChangePasswordInput): User {
         val user = userRepository.queryByUsername(input.username).orElse(null) ?: throw DgsEntityNotFoundException("User not found!")
-        user.password = JwtUtils.passwordEncoder().encode(input.password)
+        user.password = PasswordUtils.encode(input.password)
         return userRepository.save(user)
     }
 }

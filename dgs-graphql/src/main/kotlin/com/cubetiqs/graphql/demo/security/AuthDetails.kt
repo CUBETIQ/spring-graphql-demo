@@ -1,7 +1,8 @@
 package com.cubetiqs.graphql.demo.security
 
 import com.cubetiqs.graphql.demo.domain.user.User
-import com.cubetiqs.security.jwt.util.JwtUtils
+import com.cubetiqs.sp.security.jwt.util.JwtTokenUtils
+import com.cubetiqs.sp.security.util.PasswordUtils
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
@@ -47,7 +48,7 @@ data class AuthDetails(
     }
 
     fun isPasswordValid(password: String): Boolean {
-        return JwtUtils.passwordEncoder().matches(password, this.getPassword())
+        return PasswordUtils.matches(password, this.getPassword())
     }
 
     companion object {

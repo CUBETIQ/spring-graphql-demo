@@ -14,7 +14,8 @@ input UserInput {
 }
 
 type LoginResponse {
-    token: String
+    accessToken: String
+    refreshToken: String
 }
 
 input UserChangePasswordInput {

@@ -8,7 +8,7 @@ import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
 import java.math.BigDecimal
 import java.util.*
-import javax.persistence.*
+import jakarta.persistence.*
 
 @Entity
 @Table(name = "accounts", indexes = [

@@ -1,0 +1,8 @@
+[submodule "cubetiq-security-core"]
+	path = cubetiq-security-core
+	url = https://git.cubetiqs.com/cubetiq/cubetiq-security-core.git
+	branch = main
+[submodule "cubetiq-security-web"]
+	path = cubetiq-security-web
+	url = https://git.cubetiqs.com/cubetiq/cubetiq-security-web.git
+	branch = main

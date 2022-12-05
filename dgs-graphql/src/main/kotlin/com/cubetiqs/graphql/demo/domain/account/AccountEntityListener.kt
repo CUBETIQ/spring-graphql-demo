@@ -1,9 +1,9 @@
 package com.cubetiqs.graphql.demo.domain.account
 
 import java.util.*
-import javax.persistence.PostPersist
-import javax.persistence.PrePersist
-import javax.persistence.PreUpdate
+import jakarta.persistence.PostPersist
+import jakarta.persistence.PrePersist
+import jakarta.persistence.PreUpdate
 
 class AccountEntityListener {
     @PrePersist

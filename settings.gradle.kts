@@ -1,4 +1,3 @@
 rootProject.name = "spring-graphql-demo"
 
-include("dgs-graphql")
-include("cubetiq-security-jwt")
+include("cubetiq-security-core", "cubetiq-security-web", "dgs-graphql")

@@ -8,7 +8,7 @@ import org.springframework.security.crypto.password.PasswordEncoder
 
 @SpringBootApplication
 class GraphqlDemoApplication @Autowired constructor(
-    private val passwordEncoder: PasswordEncoder,
+    passwordEncoder: PasswordEncoder,
 ) {
     init {
         PasswordUtils.setEncoder(passwordEncoder)
